@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://crlc85bdrvl7u"]
+
+[node name="ui" type="Control" unique_id=622701640]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1440846559]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 47.0
+offset_right = 769.0
+offset_bottom = 364.0
+alignment = 1
+
+[node name="Rock" type="Button" parent="HBoxContainer" unique_id=721310357]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "rock"
+
+[node name="Paper" type="Button" parent="HBoxContainer" unique_id=532671882]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "paper"
+
+[node name="Scissor" type="Button" parent="HBoxContainer" unique_id=1944870096]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scissor
+"

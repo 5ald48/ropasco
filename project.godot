@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Ropasco"
+run/main_scene="uid://b24ko1umh0lv4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+InGameVariables="*uid://c54poygcwv83v"
 
 [display]
 
