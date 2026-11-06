@@ -1,5 +1,71 @@
 [gd_scene format=3 uid="uid://crlc85bdrvl7u"]
 
+[ext_resource type="Script" uid="uid://d2fx0xovlsqpm" path="res://scripts/rock.gd" id="1_kplmn"]
+[ext_resource type="Script" uid="uid://cv5kx30j3r3cm" path="res://scripts/paper.gd" id="2_a45jx"]
+[ext_resource type="Script" uid="uid://c8hy1t0fec7oj" path="res://scripts/scissor.gd" id="3_fqvwy"]
+[ext_resource type="PackedScene" uid="uid://csfy42ei1jnr0" path="res://scenes/play.tscn" id="4_fqvwy"]
+[ext_resource type="Script" uid="uid://cd3b34rvooa60" path="res://scripts/play.gd" id="5_ria60"]
+
+[sub_resource type="GDScript" id="GDScript_bhunq"]
+script/source = "extends RichTextLabel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = inGameVariables.Choice.keys()[inGameVariables.player_choice]
+"
+
+[sub_resource type="GDScript" id="GDScript_ria60"]
+script/source = "extends RichTextLabel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+
+func _on_play_pressed() -> void:
+	text = inGameVariables.Choice.keys()[inGameVariables.enemy_choice]
+"
+
+[sub_resource type="GDScript" id="GDScript_6qwj3"]
+script/source = "extends RichTextLabel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = inGameVariables.result
+"
+
+[sub_resource type="GDScript" id="GDScript_riqys"]
+script/source = "extends RichTextLabel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = str(inGameVariables.player_HP)
+"
+
 [node name="ui" type="Control" unique_id=622701640]
 layout_mode = 3
 anchors_preset = 0
@@ -8,24 +74,87 @@ offset_bottom = 648.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1440846559]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 47.0
-offset_right = 769.0
-offset_bottom = 364.0
+offset_left = 257.0
+offset_top = 492.0
+offset_right = 884.0
+offset_bottom = 644.0
 alignment = 1
 
 [node name="Rock" type="Button" parent="HBoxContainer" unique_id=721310357]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "rock"
+script = ExtResource("1_kplmn")
 
 [node name="Paper" type="Button" parent="HBoxContainer" unique_id=532671882]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "paper"
+script = ExtResource("2_a45jx")
 
 [node name="Scissor" type="Button" parent="HBoxContainer" unique_id=1944870096]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Scissor
 "
+script = ExtResource("3_fqvwy")
+
+[node name="player choice" type="RichTextLabel" parent="." unique_id=60392213]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 435.0
+offset_right = 619.0
+offset_bottom = 481.0
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_bhunq")
+
+[node name="enemy choice" type="RichTextLabel" parent="." unique_id=1442779430]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 64.0
+offset_right = 616.0
+offset_bottom = 110.0
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_ria60")
+
+[node name="result" type="RichTextLabel" parent="." unique_id=1948985024]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 235.0
+offset_right = 586.0
+offset_bottom = 275.0
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_6qwj3")
+
+[node name="hp" type="RichTextLabel" parent="." unique_id=48476423]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_riqys")
+
+[node name="play" parent="." unique_id=1222508178 instance=ExtResource("4_fqvwy")]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 572.0
+offset_right = 1145.0
+offset_bottom = 643.0
+text = "play"
+script = ExtResource("5_ria60")
+
+[connection signal="pressed" from="HBoxContainer/Rock" to="HBoxContainer/Rock" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Paper" to="HBoxContainer/Paper" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Scissor" to="HBoxContainer/Scissor" method="_on_pressed"]
+[connection signal="pressed" from="play" to="enemy choice" method="_on_play_pressed"]

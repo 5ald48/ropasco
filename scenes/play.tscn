@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://csfy42ei1jnr0"]
+
+[ext_resource type="PackedScene" uid="uid://b5a4d0r5tg43t" path="res://scenes/enemy_type.tscn" id="1_8r3iy"]
+
+[node name="play" type="Button" unique_id=1222508178]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="enemy type" parent="." unique_id=495329272 instance=ExtResource("1_8r3iy")]
+
+[connection signal="pressed" from="." to="enemy type/normal enemy" method="_on_play_pressed"]
+
+[editable path="enemy type"]

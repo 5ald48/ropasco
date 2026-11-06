@@ -1,11 +1,15 @@
 extends Node
 
+enum Choice { ROCK, PAPER, SCISSORS }
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var player_choice :Choice
+var enemy_choice :Choice
+
+var result =""
+var player_HP: int = 3
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+
+func _process(_delta: float) -> void:
 	pass
